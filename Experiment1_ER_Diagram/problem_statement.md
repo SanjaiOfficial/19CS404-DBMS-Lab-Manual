@@ -45,28 +45,44 @@ Design a database for patient management, appointments, medical records, and bil
    - Why you chose the entities and relationships.
    - How you modeled prerequisites or billing.
 
-# ER Diagram Submission - Student Name
+# ER Diagram Submission - SANJAI L
 
 ## Scenario Chosen:
 University / Hospital (choose one)
 
 ## ER Diagram:
-![ER Diagram](er_diagram.png)
+![image](https://github.com/user-attachments/assets/03c64c41-db4c-498c-ba26-c6d9692c3ad9)
+
 
 ## Entities and Attributes:
-- Entity1: Attributes
-- Entity2: Attributes
+Student: Register Number, Name, Date of Birth, Email, Mobile Number, Department ID
+
+Course: Course Number, Course Name, Number of Credits, Department ID, Faculty ID, Prerequisite Course Number
+
+Faculty: Staff ID, Name, Email, Mobile Number
+
+Department: Department ID, Department Name
+
+Enrollment: Register Number, Course Number
 ...
 
 ## Relationships and Constraints:
-- Relationship1 (Cardinality, Participation)
-- Relationship2 (Cardinality, Participation)
+Belongs_To (Cardinality, Participation)
+Enrolled_In (Cardinality, Participation)
+Offered_By (Cardinality, Participation)
+Handled_By (Cardinality, Participation)
+Has_Prerequisite (Cardinality, Participation)
+
+
 ...
 
 ## Extension (Prerequisite / Billing):
-- Explain how you modeled prerequisites or billing.
+- In the ER diagram, prerequisites are modeled using a recursive relationship on the Course entity. This means that a course can reference another course as its prerequisite, creating a self-relationship. Each course has an optional attribute called Prerequisite Course Number, which points to the Course Number of another course that must be completed beforehand. This setup allows the system to track course dependencies and ensure that students enroll in courses in the correct sequence. The relationship is typically many-to-one, as multiple courses can share the same prerequisite, but each course has at most one prerequisite.
+
 
 ## Design Choices:
-Brief explanation of why you chose certain entities, relationships, and assumptions
+The entities—**Student**, **Course**, **Faculty**, and **Department**—were chosen because they represent the core components of a university system. Each plays a distinct role: students enroll in courses, courses are offered and handled by faculty, and departments organize both students and courses. The **Enrollment** relationship was necessary to handle the many-to-many interaction between students and courses. The **Prerequisite** relationship was modeled recursively within the Course entity to reflect real-world academic requirements. Assumptions made include that each student belongs to only one department, each course is handled by one faculty member, and not all courses require prerequisites, allowing for optional relationships. These choices aim to reflect typical university structures while keeping the model clear and normalized.
+
 
 ## RESULT
+Thus,the university database is successfully executed.
